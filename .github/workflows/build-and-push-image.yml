@@ -28,4 +28,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Push Docker image
-        run: docker push "blogmates/authorisation:${{ env.RELEASE_VERSION }}"
+        run: docker push "blogmates/io:${{ env.RELEASE_VERSION }}"
