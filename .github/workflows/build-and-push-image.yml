@@ -19,7 +19,10 @@ jobs:
           echo "Version: $RELEASE_VERSION"
 
       - name: Build Docker image
-        run: docker build --platform linux/amd64,linux/arm64 -t "blogmates/authorisation:${{ env.RELEASE_VERSION }}" .
+        run: docker build --platform linux/amd64 -t "blogmates/io:${{ env.RELEASE_VERSION }}" .
+
+      - name: Build Docker image arm
+        run: docker build --platform linux/arm64 -t "blogmates/io-arm:${{ env.RELEASE_VERSION }}" .
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -29,3 +32,6 @@ jobs:
 
       - name: Push Docker image
         run: docker push "blogmates/io:${{ env.RELEASE_VERSION }}"
+
+      - name: Push Docker image arm
+        run: docker push "blogmates/io-arm:${{ env.RELEASE_VERSION }}"
